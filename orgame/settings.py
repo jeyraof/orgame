@@ -89,5 +89,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Session
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
 if os.path.isfile(os.path.join(os.path.dirname(__file__), 'service_settings.py')):
     import service_settings

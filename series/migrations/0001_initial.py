@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             name='Series',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=255)),
+                ('name', models.CharField(max_length=255, db_index=True)),
                 ('extra_info', models.TextField(blank=True)),
                 ('category', models.ForeignKey(to='series.Category', blank=True)),
             ],
