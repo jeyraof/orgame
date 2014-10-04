@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
+from django.template import RequestContext
 from orgame.settings import FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET
 from .models import SocialOAuth
 import urllib2
@@ -7,6 +8,9 @@ import json
 
 
 def sign_in(request):
+    RequestContext(request=request)
+    if request.user.is_authenticated is True:
+        return redirect('orgame.views.main')
     return render(request, 'sign_in.html')
 
 
