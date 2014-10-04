@@ -8,7 +8,7 @@ class Category(models.Model):
 
 class Series(models.Model):
     category = models.ForeignKey(Category, blank=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, db_index=True)
     extra_info = models.TextField(blank=True)
 
 
