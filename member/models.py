@@ -25,6 +25,16 @@ class User(models.Model):
         new_user.save()
         return new_user
 
+    @classmethod
+    def get_by(cls, member_id):
+        if not member_id:
+            return None
+
+        user = list(cls.objects.filter(id=member_id))
+        if user:
+            return user[0]
+        return None
+
     def merge_with(self, other_user):
         # 새로운 Social 타입이 생길때를 대비해서 작성할 예정
         # FB_user.merge_with(other_social_user) -> 두 유져 병합

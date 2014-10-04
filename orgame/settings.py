@@ -98,6 +98,12 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'member/templates'),
 )
 
+# Context Processor
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'context_processor.global_context',
+)
+
 # Social
 FACEBOOK_CLIENT_ID = ''
 FACEBOOK_CLIENT_SECRET = ''
