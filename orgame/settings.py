@@ -92,5 +92,17 @@ STATIC_URL = '/static/'
 # Session
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
+# Templates
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'orgame/templates'),
+    os.path.join(BASE_DIR, 'member/templates'),
+)
+
+# Social
+FACEBOOK_CLIENT_ID = ''
+FACEBOOK_CLIENT_SECRET = ''
+
 if os.path.isfile(os.path.join(os.path.dirname(__file__), 'service_settings.py')):
-    import service_settings
+    from service_settings import db_flag, FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET
+    if db_flag:
+        from service_settings import DB as DATABASE

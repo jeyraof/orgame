@@ -31,6 +31,13 @@ class User(models.Model):
         # knowledge 처리가 곤란하다. 한쪽을 버리게 하던지, 재계산이 필요할듯.
         pass
 
+    def sign_in(self, request):
+        request.session['member_id'] = self.id
+
+    @property
+    def is_authenticated(self):
+        return True
+
     @property
     def is_staff(self):
         return self.role > self.MEMBER
@@ -48,7 +55,7 @@ class SocialOAuth(models.Model):
 
     user = models.ForeignKey(User, blank=False)
     provider = models.IntegerField(choices=PROVIDER_CHOICES, blank=False)
-    uid = models.CharField(max_length=200)
+    uid = models.CharField(max_length=100)
 
     @classmethod
     def join(cls, provider, uid):

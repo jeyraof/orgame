@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('provider', models.IntegerField(choices=[(1, b'Facebook')])),
-                ('uid', models.CharField(max_length=200)),
+                ('uid', models.CharField(max_length=100)),
             ],
             options={
             },
@@ -41,6 +41,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nickname', models.CharField(max_length=50, unique=True, null=True, blank=True)),
+                ('email', models.CharField(max_length=100, unique=True, null=True, blank=True)),
                 ('role', models.IntegerField(default=0, choices=[(0, b'Member'), (1, b'Blocked User'), (2, b'Admin')])),
                 ('knowledge', models.IntegerField(default=0)),
                 ('joined_at', models.DateTimeField(auto_now_add=True)),
