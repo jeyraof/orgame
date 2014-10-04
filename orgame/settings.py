@@ -39,6 +39,7 @@ INSTALLED_APPS = (
 
     # internal
     'series',
+    'member',
 
     # external
     'debug_toolbar',
