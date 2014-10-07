@@ -1,52 +1,27 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 from series.models import Series, Episode
+from orgame.settings import SECRET_KEY
 
 
-class User(models.Model):
+class Profile(models.Model):
+    user = models.OneToOneField(User)
+
     MEMBER = 0
     MODERATOR = 1
     ADMIN = 2
     ROLE_CHOICES = (
         (MEMBER, 'Member'),
-        (MODERATOR, 'Blocked User'),
+        (MODERATOR, 'Moderator'),
         (ADMIN, 'Admin'),
     )
-
     nickname = models.CharField(max_length=50, blank=True, unique=True, null=True)
     email = models.CharField(max_length=100, blank=True, unique=True, null=True)
     role = models.IntegerField(choices=ROLE_CHOICES, blank=False, default=0)
     knowledge = models.IntegerField(blank=False, default=0)
     joined_at = models.DateTimeField(auto_now_add=True)
-
-    @classmethod
-    def new(cls):
-        new_user = cls(email=None, nickname=None)
-        new_user.save()
-        return new_user
-
-    @classmethod
-    def get_by(cls, member_id):
-        if not member_id:
-            return None
-
-        user = list(cls.objects.filter(id=member_id))
-        if user:
-            return user[0]
-        return None
-
-    def merge_with(self, other_user):
-        # 새로운 Social 타입이 생길때를 대비해서 작성할 예정
-        # FB_user.merge_with(other_social_user) -> 두 유져 병합
-        # knowledge 처리가 곤란하다. 한쪽을 버리게 하던지, 재계산이 필요할듯.
-        pass
-
-    def sign_in(self, request):
-        request.session['member_id'] = self.id
-
-    @property
-    def is_authenticated(self):
-        return True
 
     @property
     def is_staff(self):
@@ -68,14 +43,19 @@ class SocialOAuth(models.Model):
     uid = models.CharField(max_length=100)
 
     @classmethod
-    def join(cls, provider, uid):
-        new_user = User.new()
+    def join(cls, provider, uid, profile=None):
+        if not profile:
+            return None
+        user_profile = {
+            'username': profile.get('name', ''),
+            'email': '{account}@facebook.com'.format(account=profile.get('id', '')),
+            'password': make_password(profile.get('name', ''), salt=SECRET_KEY),
+        }
+        new_user = User.objects.create_user(**user_profile)
+        new_user.save()
         new_oauth = cls(user=new_user, provider=provider, uid=uid)
         new_oauth.save()
         return new_oauth
-
-    def login(self):
-        self.user.login()
 
 
 class Record(models.Model):

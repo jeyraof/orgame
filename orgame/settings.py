@@ -104,6 +104,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'context_processor.global_context',
 )
 
+# Authentication backends
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 # Social
 FACEBOOK_CLIENT_ID = ''
 FACEBOOK_CLIENT_SECRET = ''
