@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password
+from hashlib import md5
 from orgame.settings import SECRET_KEY
 
 
@@ -45,13 +45,18 @@ class SocialOAuth(models.Model):
     def join(cls, provider, uid, profile=None):
         if not profile:
             return None
-        user_profile = {
+
+        user_info = {
             'username': profile.get('name', ''),
             'email': '{account}@facebook.com'.format(account=profile.get('id', '')),
-            'password': make_password(profile.get('name', ''), salt=SECRET_KEY),
+            'password': md5(profile.get('name', '') + SECRET_KEY).hexdigest(),
         }
-        new_user = User.objects.create_user(**user_profile)
+        new_user = User.objects.create_user(**user_info)
         new_user.save()
+
+        user_profile = Profile(user=new_user)
+        user_profile.save()
+
         new_oauth = cls(user=new_user, provider=provider, uid=uid)
         new_oauth.save()
         return new_oauth
