@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if is_newbie %}
+        <div class="container jumbo">
+            환영합니다!
+        </div>
+    {% endif %}
+
+<div class="form-box">
+    <h3>
+        {% if is_newbie %}
+        정보를 입력하고 시작하세요!
+        {% else %}
+        정보를 수정해보세요!
+        {% endif %}
+    </h3>
+    <div class="form-content">
+        <form action="{% url 'settings' %}" method="post">{% csrf_token %}
+            <dl class="form">
+                <dt>
+                    <label for="input_nickname">닉네임</label>
+                </dt>
+                <dd>
+                    <input id="input_nickname" type="text" name="nickname" value="{% if user.profile.nickname %}{{ user.profile.nickname }}{% endif %}"/>
+                    <p class="note">영어, 숫자, _, - 만 이용 가능합니다.</p>
+                    {% if nickname_msg %}<p class="note alarm">{{ nickname_msg }}</p>{% endif %}
+                </dd>
+            </dl>
+            <dl class="form">
+                <dt>
+                    <label for="input_email">Email</label>
+                </dt>
+                <dd>
+                    <input id="input_email" type="text" name="email" value="{% if user.profile.email %}{{ user.profile.email }}{% endif %}"/>
+                    {% if email_msg %}<p class="note alarm">{{ email_msg }}</p>{% endif %}
+                </dd>
+            </dl>
+            <p>
+                <button type="submit" class="button green" name="from" value="settings">저장</button>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

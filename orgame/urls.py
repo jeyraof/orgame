@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from member.urls import urlpatterns_sign, urlpatterns_settings
+from .views import main
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'orgame.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-)
+                       url(r'^$', main, name='main'),
+                       url(r'^admin/', include(admin.site.urls)),
+                       url(r'^sign/', include(urlpatterns_sign)),
+                       url(r'^settings/', include(urlpatterns_settings))
+                       )
