@@ -75,7 +75,6 @@ def oauth_facebook_auth(request):
 
     login_user = authenticate(username=social_user.user.username,
                               password=make_password(social_user.user.username, salt=SECRET_KEY))
-    print social_user.user.__dict__
 
     if login_user is not None:
         login(request=request, user=login_user)
