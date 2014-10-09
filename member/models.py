@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from hashlib import md5
 from orgame.settings import SECRET_KEY
+import re
 
 
 class Profile(models.Model):
@@ -29,6 +30,36 @@ class Profile(models.Model):
     @property
     def is_admin(self):
         return self.role == self.ADMIN
+
+    @property
+    def is_newbie(self):
+        if not self.nickname or not self.email:
+            return True
+        return False
+
+    @classmethod
+    def validate_nickname(cls, nickname=None):
+        if re.match("^[A-Za-z0-9_-]*$", nickname or ''):
+            try:
+                cls.objects.get(nickname=nickname)
+                return False, '이미 존재하는 닉네임 입니다.'
+
+            except cls.DoesNotExist:
+                return True, None
+
+        return False, '알파벳, 숫자, _, - 만 사용 가능합니다.'
+
+    @classmethod
+    def validate_email(cls, email=None):
+        if re.match("[^@]+@[^@]+\.[^@]+", email or ''):
+            try:
+                cls.objects.get(email=email)
+                return False, '이미 존재하는 이메일 입니다.'
+
+            except cls.DoesNotExist:
+                return True, None
+
+        return False, '올바른 이메일을 입력해주세요.'
 
 
 class SocialOAuth(models.Model):
