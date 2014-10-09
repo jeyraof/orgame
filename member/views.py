@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.views.generic import View
 from hashlib import md5
 from member.models import SocialOAuth
 from orgame.settings import FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET, SECRET_KEY
@@ -10,13 +11,13 @@ import json
 
 def sign_in(request):
     if request.user.is_authenticated():
-        return redirect('orgame.views.main')
+        return redirect('main')
     return render(request, 'member/sign_in.html')
 
 
 def sign_out(request):
     logout(request=request)
-    return redirect('orgame.views.main')
+    return redirect('main')
 
 
 def oauth_facebook(request):
@@ -56,7 +57,7 @@ def oauth_facebook_auth(request):
     access_token, expired_at = get_access_token(code)
 
     if not access_token:
-        return redirect('member.views.sign_in')
+        return redirect('signin')
 
     def get_user_profile(token):
         u = 'https://graph.facebook.com/me?access_token={access_token}'.format(access_token=token)
@@ -78,7 +79,38 @@ def oauth_facebook_auth(request):
 
     if login_user is not None:
         login(request=request, user=login_user)
-        return redirect('orgame.views.main')
+        return redirect('main')
 
     else:
-        return redirect('member.views.sign_in')
+        return redirect('signin')
+
+
+class SettingsView(View):
+    def get(self, request):
+        opt = {}
+        if request.user.profile.is_newbie:
+            opt['is_newbie'] = True
+        return render(request, 'member/settings.html', opt)
+
+    def post(self, request):
+        opt = {}
+
+        data = request.POST
+
+        nickname = data.get('nickname', None)
+        if not request.user.profile.nickname == nickname:
+            nickname_valid, nickname_msg = request.user.profile.validate_nickname(nickname=nickname)
+            if nickname_valid:
+                request.user.profile.nickname = nickname
+            opt['nickname_msg'] = nickname_msg
+
+        email = data.get('email', None)
+        if not request.user.profile.email == email:
+            email_valid, email_msg = request.user.profile.validate_email(email=email)
+            if email_valid:
+                request.user.profile.email = email
+            opt['email_msg'] = email_msg
+
+        request.user.profile.save()
+
+        return render(request, 'member/settings.html', opt)
