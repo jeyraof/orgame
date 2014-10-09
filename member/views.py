@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password
+from hashlib import md5
+from member.models import SocialOAuth
 from orgame.settings import FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET, SECRET_KEY
-from .models import SocialOAuth
 import urllib2
 import json
 
@@ -74,7 +74,7 @@ def oauth_facebook_auth(request):
                                        profile=user_profile)
 
     login_user = authenticate(username=social_user.user.username,
-                              password=make_password(social_user.user.username, salt=SECRET_KEY))
+                              password=md5(social_user.user.username + SECRET_KEY).hexdigest())
 
     if login_user is not None:
         login(request=request, user=login_user)
