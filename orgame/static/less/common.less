@@ -1,0 +1,69 @@
+@import "global.less";
+
+#header {
+  background: #F5F5F5;
+  border-bottom: 1px solid #E4E4E4;
+  padding: 10px 0;
+  overflow: hidden;
+
+  .logo {
+    float: left;
+    font-size: 27px;
+    line-height: 28px;
+    font-weight: bold;
+    margin: 0 20px 0 -2px;
+    padding: 0;
+  }
+
+  .search-form-box {
+    float: left;
+    width: 360px;
+
+    input[type=text] {
+      position: relative;
+      width: 100%;
+      min-height: 28px;
+      padding: 4px 20px 4px 8px;
+      font-size: 12px;
+    }
+  }
+
+  .header-nav {
+    margin: 0 -8px 0 0;
+    padding: 0;
+    list-style: none;
+    height: 28px;
+
+    .header-nav-item {
+      min-width: 34px;
+      font-size: 18px;
+      float: left;
+
+      .header-nav-link {
+        display: block;
+        padding: 4px 8px;
+        line-height: 20px;
+        font-weight: bold;
+
+        &.name {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+#content {
+  .page-head {
+    margin: 0 0 20px 0;
+    padding: 20px 0;
+    border-bottom: 1px solid #EEEEEE;
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      line-height: 28px;
+      font-size: 20px;
+    }
+  }
+}

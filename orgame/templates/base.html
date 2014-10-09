@@ -1,0 +1,71 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>올가미</title>
+
+    <link rel="stylesheet" href="{% static 'bundle/normalize.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bundle/font-awesome/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'less/common.css' %}"/>
+</head>
+<body>
+<div id="header">
+    <div class="container clearfix">
+        <a class="logo" href="{% url 'main' %}">
+            <i class="fa fa-home"></i>
+            올가미
+        </a>
+
+        <div class="search-form-box">
+            <form class="search-form" action="#">
+                <input type="text" name="keyword" placeholder="작품 검색"/>
+            </form>
+        </div>
+
+        <ul class="header-nav right">
+            {% if user.is_authenticated %}
+                {% if user.profile.is_newbie %}
+                <li class="header-nav-item">
+                    <a class="header-nav-link on" href="{% url 'settings' %}">
+                        <i class="fa fa-cog fa-spin"></i>
+                    </a>
+                </li>
+                {% else %}
+                <li class="header-nav-item">
+                    <a class="header-nav-link name" href="#">{{ user.profile.nickname }}</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header-nav-link" href="{% url 'settings' %}">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                </li>
+                {% endif %}
+            <li class="header-nav-item">
+                <a class="header-nav-link" href="{% url 'signout' %}">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="header-nav-item">
+                <a class="header-nav-link" href="{% url 'signin' %}">
+                    <i class="fa fa-sign-in"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<div id="content">
+{% block content %}{% endblock %}
+</div>
+<div id="footer">
+
+</div>
+</body>
+</html>
