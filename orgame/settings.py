@@ -96,9 +96,6 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 # Templates
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'orgame/templates'),
-    os.path.join(BASE_DIR, 'member/templates'),
-    os.path.join(BASE_DIR, 'series/templates'),
-    os.path.join(BASE_DIR, 'suggestion/templates'),
 )
 
 # Context Processor
