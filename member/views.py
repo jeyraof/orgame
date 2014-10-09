@@ -11,7 +11,7 @@ import json
 def sign_in(request):
     if request.user.is_authenticated:
         return redirect('orgame.views.main')
-    return render(request, 'sign_in.html')
+    return render(request, 'member/sign_in.html')
 
 
 def sign_out(request):
