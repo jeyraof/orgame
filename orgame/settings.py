@@ -101,7 +101,7 @@ TEMPLATE_DIRS = (
 # Context Processor
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    'context_processor.global_context',
+    'orgame.context_processor.global_context',
 )
 
 # Authentication backends
