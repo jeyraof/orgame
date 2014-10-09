@@ -2,7 +2,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
-from series.models import Series, Episode
 from orgame.settings import SECRET_KEY
 
 
@@ -56,15 +55,3 @@ class SocialOAuth(models.Model):
         new_oauth = cls(user=new_user, provider=provider, uid=uid)
         new_oauth.save()
         return new_oauth
-
-
-class Record(models.Model):
-    user = models.ForeignKey(User, blank=False)
-    series = models.ForeignKey(Series, blank=False)
-    episode = models.ForeignKey(Episode, blank=False)
-    star = models.IntegerField(blank=True)
-    review = models.TextField(blank=True)
-    view_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        unique_together = ('user', 'series', 'episode', )
