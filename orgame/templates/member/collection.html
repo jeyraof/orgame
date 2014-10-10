@@ -8,7 +8,39 @@
             <span class="category">사용자</span>
             <span class="divider">/</span>
             <a class="target" href="{% url 'user_collection' owner.profile.nickname %}">{{ owner.profile.nickname }}</a>
+
+            <ul class="cl-nav right">
+                <li class="cl-nav-item">
+                    <a href="#">
+                        <span class="count">{{ owner.profile.knowledge }}</span>
+                        <span class="title">지식</span>
+                    </a>
+                </li>
+                <li class="cl-nav-item">
+                    <a href="#">
+                        <span class="count">0</span>
+                        <span class="title">작품 콜렉션</span>
+                    </a>
+                </li>
+                <li class="cl-nav-item">
+                    <a href="#">
+                        <span class="count">0</span>
+                        <span class="title">영상 콜렉션</span>
+                    </a>
+                </li>
+            </ul>
         </h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="column-set">
+        <div class="column one-fourth">
+            aaa
+        </div>
+        <div class="column three-fourths">
+            bbb
+        </div>
     </div>
 </div>
 {% endblock %}

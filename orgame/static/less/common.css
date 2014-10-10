@@ -135,6 +135,29 @@ dl.form input[type=text] {
   background-repeat: repeat-x;
   border-color: #5ca941;
 }
+.column-set {
+  clear: both;
+  overflow: hidden;
+}
+.column {
+  float: left;
+  padding: 0 10px;
+}
+.one-third {
+  width: 33%;
+}
+.two-thirds {
+  width: 67%;
+}
+.one-fourth {
+  width: 25%;
+}
+.one-half {
+  width: 50%;
+}
+.three-fourths {
+  width: 75%;
+}
 #header {
   background: #F5F5F5;
   border-bottom: 1px solid #E4E4E4;
@@ -186,7 +209,7 @@ dl.form input[type=text] {
   border-bottom: 1px solid #EEEEEE;
 }
 #content .page-head h1 {
-  margin: 0;
+  margin: 2px 0 -2px 0;
   padding: 0;
   line-height: 28px;
   font-size: 20px;
@@ -201,4 +224,30 @@ dl.form input[type=text] {
 #content .page-head h1 a.target {
   color: #4183c4;
   font-weight: bold;
+}
+.page-head .collection .cl-nav {
+  margin: -4px -20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.page-head .collection .cl-nav .cl-nav-item {
+  float: left;
+}
+.page-head .collection .cl-nav .cl-nav-item > a {
+  display: block;
+  text-align: center;
+  padding: 0 20px;
+}
+.page-head .collection .cl-nav .cl-nav-item .count {
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1;
+  color: #4183c4;
+}
+.page-head .collection .cl-nav .cl-nav-item .title {
+  display: block;
+  color: #999999;
+  font-size: 11px;
+  line-height: 15px;
 }
