@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['orga.me', 'localhost']
+ALLOWED_HOSTS = ['dev.orga.me', 'orga.me', 'localhost']
 
 
 # Application definition
