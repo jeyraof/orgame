@@ -65,12 +65,23 @@
       line-height: 28px;
       font-size: 20px;
       font-weight: normal;
+      clear: both;
+      overflow: hidden;
+
+      >span, >a {
+        float: left;
+        line-height: 28px;
+      }
+
+      .fa {
+        line-height: 24px;
+      }
 
       .category {
         margin-left: 5px;
       }
       .divider {
-        margin: 0 5px;
+        margin: 0 10px;
       }
       a.target {
         color: #4183c4;
@@ -81,3 +92,4 @@
 }
 
 @import "member.less";
+@import "series.less";
