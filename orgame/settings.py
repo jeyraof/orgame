@@ -122,6 +122,4 @@ FACEBOOK_CLIENT_SECRET = ''
 if os.path.isfile(os.path.join(os.path.dirname(__file__), 'service_settings.py')):
     from service_settings import (db_flag, SECRET_KEY,
                                   FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET,
-                                  DEBUG)
-    if db_flag:
-        from service_settings import DB as DATABASE
+                                  DEBUG, DATABASES)
