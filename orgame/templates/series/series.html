@@ -1,0 +1,33 @@
+{% extends 'series/base.html' %}
+
+{% block series_path %}
+    {% if is_new %}
+        <form class="new-series-form" method="post" action="{% url 'series_new' %}">{% csrf_token %}
+            <label>
+                <input type="text" name="series_name" placeholder="시리즈 제목"/>
+            </label>
+            <button type="submit" class="button minibutton">만들기</button>
+        </form>
+    {% else %}
+        <a class="target" href="{% url 'series' series.id %}">{{ series.name }}</a>
+    {% endif %}
+{% endblock %}
+
+{% block series_content %}
+{% if not is_new %}
+    <ul class="episode-list">
+    {% for episode in episode_list %}
+        <li class="episode-list-item">
+            <a href="{% url 'episode' series.id episode.id %}">Ep{{ episode.episode }}. {{ episode.name }}</a>
+        </li>
+    {% endfor %}
+        <li class="episode-list-item">
+            <form action="{% url 'episode_new' series.id %}" method="post" class="new-episode-form">{% csrf_token %}
+                <label>EP<input type="text" name="episode_number" placeholder="17"/>.</label>
+                <label><input type="text" name="episode_name" placeholder="올가미 세상을 옭아매다!"/></label>
+                <button type="submit" class="button">만들기</button>
+            </form>
+        </li>
+    </ul>
+{% endif %}
+{% endblock %}
