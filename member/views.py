@@ -1,9 +1,9 @@
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from hashlib import md5
-from member.models import SocialOAuth
+from member.models import Profile, SocialOAuth
 from orgame.settings import FACEBOOK_CLIENT_ID, FACEBOOK_CLIENT_SECRET, SECRET_KEY
 import urllib2
 import json
@@ -114,3 +114,25 @@ class SettingsView(View):
         request.user.profile.save()
 
         return render(request, 'member/settings.html', opt)
+
+
+class UserView(View):
+    def get(self, request, nickname=None):
+        if not nickname:
+            if request.user.profile.is_newbie:
+                return redirect('settings')
+
+            opt = {
+                'is_mine': True,
+                'owner': request.user,
+            }
+
+        else:
+            profile = get_object_or_404(Profile, nickname=nickname)
+
+            opt = {
+                'is_mine': profile.id == request.user.profile.id,
+                'owner': profile.user,
+            }
+
+        return render(request, 'member/collection.html', opt)

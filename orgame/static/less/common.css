@@ -146,7 +146,7 @@ dl.form input[type=text] {
   font-size: 27px;
   line-height: 28px;
   font-weight: bold;
-  margin: 0 20px 0 -2px;
+  margin: 0 40px 0 -2px;
   padding: 0;
 }
 #header .search-form-box {
@@ -190,4 +190,15 @@ dl.form input[type=text] {
   padding: 0;
   line-height: 28px;
   font-size: 20px;
+  font-weight: normal;
+}
+#content .page-head h1 .category {
+  margin-left: 5px;
+}
+#content .page-head h1 .divider {
+  margin: 0 5px;
+}
+#content .page-head h1 a.target {
+  color: #4183c4;
+  font-weight: bold;
 }

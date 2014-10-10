@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-head">
+    <div class="container">
+        <h1 class="collection">
+            <i class="fa fa-user"></i>
+            <span class="category">사용자</span>
+            <span class="divider">/</span>
+            <a class="target" href="{% url 'user_collection' owner.profile.nickname %}">{{ owner.profile.nickname }}</a>
+        </h1>
+    </div>
+</div>
+{% endblock %}

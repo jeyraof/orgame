@@ -17,10 +17,7 @@
 <body>
 <div id="header">
     <div class="container clearfix">
-        <a class="logo" href="{% url 'main' %}">
-            <i class="fa fa-home"></i>
-            올가미
-        </a>
+        <a class="logo" href="{% url 'main' %}">올가미</a>
 
         <div class="search-form-box">
             <form class="search-form" action="#">
@@ -38,7 +35,7 @@
                 </li>
                 {% else %}
                 <li class="header-nav-item">
-                    <a class="header-nav-link name" href="#">{{ user.profile.nickname }}</a>
+                    <a class="header-nav-link name" href="{% url 'user_collection' user.profile.nickname %}">{{ user.profile.nickname }}</a>
                 </li>
                 <li class="header-nav-item">
                     <a class="header-nav-link" href="{% url 'settings' %}">
