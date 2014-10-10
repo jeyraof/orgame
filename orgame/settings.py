@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['orga.me', 'localhost']
 
 
 # Application definition
@@ -111,6 +111,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
+
+LOGIN_URL = '/sign/in'
+LOGOUT_URL = '/sign/out'
 
 # Social
 FACEBOOK_CLIENT_ID = ''

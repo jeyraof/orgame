@@ -135,6 +135,33 @@ dl.form input[type=text] {
   background-repeat: repeat-x;
   border-color: #5ca941;
 }
+.minibutton {
+  padding: 0 10px;
+  line-height: 24px;
+}
+.column-set {
+  clear: both;
+  overflow: hidden;
+}
+.column {
+  float: left;
+  padding: 0 10px;
+}
+.one-third {
+  width: 33%;
+}
+.two-thirds {
+  width: 67%;
+}
+.one-fourth {
+  width: 25%;
+}
+.one-half {
+  width: 50%;
+}
+.three-fourths {
+  width: 75%;
+}
 #header {
   background: #F5F5F5;
   border-bottom: 1px solid #E4E4E4;
@@ -146,7 +173,7 @@ dl.form input[type=text] {
   font-size: 27px;
   line-height: 28px;
   font-weight: bold;
-  margin: 0 20px 0 -2px;
+  margin: 0 40px 0 -2px;
   padding: 0;
 }
 #header .search-form-box {
@@ -186,8 +213,83 @@ dl.form input[type=text] {
   border-bottom: 1px solid #EEEEEE;
 }
 #content .page-head h1 {
-  margin: 0;
+  margin: 2px 0 -2px 0;
   padding: 0;
   line-height: 28px;
   font-size: 20px;
+  font-weight: normal;
+  clear: both;
+  overflow: hidden;
+}
+#content .page-head h1 > span,
+#content .page-head h1 > a {
+  float: left;
+  line-height: 28px;
+}
+#content .page-head h1 .fa {
+  line-height: 24px;
+}
+#content .page-head h1 .category {
+  margin-left: 5px;
+}
+#content .page-head h1 .divider {
+  margin: 0 10px;
+}
+#content .page-head h1 a.target {
+  color: #4183c4;
+  font-weight: bold;
+}
+.page-head .collection .cl-nav {
+  margin: -1px -20px -2px 0;
+  padding: 0;
+  list-style: none;
+}
+.page-head .collection .cl-nav .cl-nav-item {
+  float: left;
+}
+.page-head .collection .cl-nav .cl-nav-item > a {
+  display: block;
+  text-align: center;
+  padding: 0 20px;
+}
+.page-head .collection .cl-nav .cl-nav-item .count {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1;
+  color: #4183c4;
+}
+.page-head .collection .cl-nav .cl-nav-item .title {
+  color: #999999;
+  font-size: 15px;
+  line-height: 1;
+}
+.page-head .series .divider {
+  margin: 0 2px;
+}
+.page-head .series > span,
+.page-head .series > a {
+  float: left;
+}
+.page-head .series .new-series-form {
+  float: left;
+}
+.page-head .series .new-series-form input[type=text] {
+  float: left;
+  position: relative;
+  width: 150px;
+  min-height: 24px;
+  padding: 4px 20px 4px 8px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.page-head .series .new-series-form .button {
+  margin: 0 0 0 10px;
+  line-height: 23px;
+  float: left;
+}
+.episode-list {
+  list-style: none;
+}
+.episode-list .new-episode-form label {
+  font-weight: normal;
 }

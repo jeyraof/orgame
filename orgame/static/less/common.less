@@ -11,7 +11,7 @@
     font-size: 27px;
     line-height: 28px;
     font-weight: bold;
-    margin: 0 20px 0 -2px;
+    margin: 0 40px 0 -2px;
     padding: 0;
   }
 
@@ -60,10 +60,36 @@
     border-bottom: 1px solid #EEEEEE;
 
     h1 {
-      margin: 0;
+      margin: 2px 0 -2px 0;
       padding: 0;
       line-height: 28px;
       font-size: 20px;
+      font-weight: normal;
+      clear: both;
+      overflow: hidden;
+
+      >span, >a {
+        float: left;
+        line-height: 28px;
+      }
+
+      .fa {
+        line-height: 24px;
+      }
+
+      .category {
+        margin-left: 5px;
+      }
+      .divider {
+        margin: 0 10px;
+      }
+      a.target {
+        color: #4183c4;
+        font-weight: bold;
+      }
     }
   }
 }
+
+@import "member.less";
+@import "series.less";

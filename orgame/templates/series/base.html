@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-head">
+    <div class="container">
+        <h1 class="series">
+            <span class="fa fa-book"></span>
+            <span class="category">시리즈</span>
+            <span class="divider">/</span>
+            {% block series_path %}{% endblock %}
+        </h1>
+    </div>
+</div>
+
+<div class="container">
+{% block series_content %}{% endblock %}
+</div>
+{% endblock %}

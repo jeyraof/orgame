@@ -38,7 +38,7 @@ class Suggestion(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICE, default=PENDING)
     model = models.CharField(max_length=20, choices=SUPPORT_MODEL_CHOICE, blank=False)
     field = models.CharField(max_length=20, blank=True)
-    target = models.IntegerField(blank=False)
+    target = models.IntegerField(blank=False, default=0)
     value_type = models.CharField(max_length=20, blank=True)
     value = models.TextField(blank=True)
     comment = models.TextField(blank=True)

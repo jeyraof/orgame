@@ -1,0 +1,12 @@
+{% extends 'series/base.html' %}
+
+{% block series_path %}
+    <a class="target" href="{% url 'series' series.id %}">{{ series.name }}</a>
+    <span class="divider">/</span>
+    <a class="target" href="{% url 'episode' series.id episode.id %}">Ep{{ episode.episode }}. {{ episode.name }}</a>
+
+{% endblock %}
+
+{% block series_content %}
+에피소드 내용
+{% endblock %}
