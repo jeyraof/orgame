@@ -3,3 +3,4 @@ service_settings.py
 .idea
 *.pyc
 db.sqlite3
+.venv
