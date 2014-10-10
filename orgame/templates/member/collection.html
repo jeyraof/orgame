@@ -4,7 +4,7 @@
 <div class="page-head">
     <div class="container">
         <h1 class="collection">
-            <i class="fa fa-user"></i>
+            <span class="fa fa-user"></span>
             <span class="category">사용자</span>
             <span class="divider">/</span>
             <a class="target" href="{% url 'user_collection' owner.profile.nickname %}">{{ owner.profile.nickname }}</a>
@@ -12,20 +12,17 @@
             <ul class="cl-nav right">
                 <li class="cl-nav-item">
                     <a href="#">
-                        <span class="count">{{ owner.profile.knowledge }}</span>
-                        <span class="title">지식</span>
+                        <span class="count"><span class="title">지식</span> {{ owner.profile.knowledge }}</span>
                     </a>
                 </li>
                 <li class="cl-nav-item">
                     <a href="#">
-                        <span class="count">0</span>
-                        <span class="title">작품 콜렉션</span>
+                        <span class="count"><span class="title">작품 콜렉션</span> 0</span>
                     </a>
                 </li>
                 <li class="cl-nav-item">
                     <a href="#">
-                        <span class="count">0</span>
-                        <span class="title">영상 콜렉션</span>
+                        <span class="count"><span class="title">영상 콜렉션</span> 0</span>
                     </a>
                 </li>
             </ul>
