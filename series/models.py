@@ -24,6 +24,9 @@ class Episode(models.Model):
     air_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def is_recordable(self, user):
+        return Record.objects.filter(episode=self, user=user).count() < 1
+
 
 class Record(models.Model):
     user = models.ForeignKey(User, blank=False)
