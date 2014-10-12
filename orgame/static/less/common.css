@@ -420,6 +420,7 @@ dl.form input[type=text] {
   margin: 0;
 }
 .search-content .main-content .search-result .search-result-item {
+  position: relative;
   padding: 30px 0;
   border-bottom: 1px solid #eeeeee;
 }
@@ -429,6 +430,40 @@ dl.form input[type=text] {
 }
 .search-content .main-content .search-result .search-result-item:first-child {
   padding-top: 0;
+}
+.search-content .main-content .search-result.series .series-name {
+  font-size: 20px;
+  line-height: 24px;
+}
+.search-content .main-content .search-result.series .series-name em {
+  background-color: rgba(255, 255, 140, 0.5);
+  font-weight: bold;
+  font-style: normal;
+  text-shadow: none;
+  padding: 2px 3px 3px 3px;
+  border-radius: 3px;
+}
+.search-content .main-content .search-result.series .series-episode-count {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: #888;
+}
+.search-content .main-content .search-result.series .series-desc {
+  max-width: 550px;
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}
+.search-content .main-content .search-result.series .series-created-at {
+  display: block;
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #888888;
 }
 .search-content .main-content .search-result.user .user-name {
   font-size: 20px;

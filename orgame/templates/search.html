@@ -43,7 +43,16 @@
         <ul class="search-result series">
             {% for item in series %}
             <li class="search-result-item">
-
+                <h3 class="series-name">
+                    <a href="{% url 'series' item.id %}">{{ item.name|highlight:search_keyword|safe }}</a>
+                </h3>
+                <p class="series-episode-count">
+                    <i class="fa fa-film"></i>
+                    {{ item.episode_count }}
+                </p>
+                <p class="series-created-at">
+                    생성일: {{ item.created_at }}
+                </p>
             </li>
             {% endfor %}
         </ul>
@@ -55,7 +64,7 @@
                     <a href="{% url 'user_collection' item.nickname %}">{{ item.nickname|highlight:search_keyword|safe }}</a>
                 </h3>
                 <p class="user-joined-at">
-                    Joined on {{ item.joined_at }}
+                    가입일: {{ item.joined_at }}
                 </p>
             </li>
             {% endfor %}
