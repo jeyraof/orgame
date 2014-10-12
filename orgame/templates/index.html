@@ -5,10 +5,12 @@
     <div class="container">
         <h1>
             <span>최근 이슈</span>
+            {% if user.is_authenticated and not user.profile.is_newbie %}
             <a class="button right" href="{% url 'series_new' %}">
                 <i class="fa fa-plus"></i>
                 새 시리즈
             </a>
+            {% endif %}
         </h1>
     </div>
 </div>
