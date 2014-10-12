@@ -270,6 +270,72 @@ dl.form input[type=text] {
   color: #4183c4;
   font-weight: bold;
 }
+#content .page-head h1 .button.right {
+  float: right;
+  padding: 0 12px;
+}
+#footer .site-footer {
+  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #777;
+  border-top: 1px solid #eee;
+}
+#footer .site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#footer .site-footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+#footer .site-footer ul li a {
+  color: #4183c4;
+}
+#footer .site-footer ul li a:hover {
+  text-decoration: underline;
+}
+#footer .site-footer ul li:first-child {
+  margin: 0;
+}
+.index-content .dashboard {
+  clear: both;
+  overflow: hidden;
+}
+.index-content .dashboard .news {
+  float: left;
+  width: 620px;
+}
+.index-content .dashboard .news .news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.index-content .dashboard .news .news-list .news-list-item {
+  border-top: 1px solid #eeeeee;
+  position: relative;
+  padding: 1em 0 1em 45px;
+  font-size: 13px;
+}
+.index-content .dashboard .news .news-list .news-list-item .fa {
+  position: absolute;
+  color: #bababa;
+  left: 11px;
+  font-size: 16px;
+}
+.index-content .dashboard .news .news-list .news-list-item a {
+  color: #4183c4;
+}
+.index-content .dashboard .news .news-list .news-list-item:first-child {
+  border: 0;
+}
+.index-content .dashboard .rank {
+  float: right;
+  width: 335px;
+}
 .search-header {
   clear: both;
   overflow: hidden;
@@ -287,6 +353,9 @@ dl.form input[type=text] {
 .search-header .search-header-form form {
   margin: 0;
   padding: 0;
+}
+.search-content {
+  overflow: hidden;
 }
 .search-content .sidebar {
   width: 220px;
@@ -355,6 +424,7 @@ dl.form input[type=text] {
   margin: 0;
 }
 .search-content .main-content .search-result .search-result-item {
+  position: relative;
   padding: 30px 0;
   border-bottom: 1px solid #eeeeee;
 }
@@ -364,6 +434,40 @@ dl.form input[type=text] {
 }
 .search-content .main-content .search-result .search-result-item:first-child {
   padding-top: 0;
+}
+.search-content .main-content .search-result.series .series-name {
+  font-size: 20px;
+  line-height: 24px;
+}
+.search-content .main-content .search-result.series .series-name em {
+  background-color: rgba(255, 255, 140, 0.5);
+  font-weight: bold;
+  font-style: normal;
+  text-shadow: none;
+  padding: 2px 3px 3px 3px;
+  border-radius: 3px;
+}
+.search-content .main-content .search-result.series .series-episode-count {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: #888;
+}
+.search-content .main-content .search-result.series .series-desc {
+  max-width: 550px;
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}
+.search-content .main-content .search-result.series .series-created-at {
+  display: block;
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #888888;
 }
 .search-content .main-content .search-result.user .user-name {
   font-size: 20px;

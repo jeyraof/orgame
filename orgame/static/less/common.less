@@ -87,10 +87,51 @@
         color: #4183c4;
         font-weight: bold;
       }
+
+      .button.right {
+        float: right;
+        padding: 0 12px;
+      }
     }
   }
 }
 
+#footer {
+  .site-footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #777;
+    border-top: 1px solid #eee;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        float: left;
+        margin-left: 10px;
+
+        a {
+          color: #4183c4;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@import "pages.less";
 @import "search.less";
 @import "member.less";
 @import "series.less";

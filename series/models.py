@@ -10,7 +10,11 @@ class Category(models.Model):
 class Series(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True)
     name = models.CharField(max_length=255, db_index=True)
-    extra_info = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def episode_count(self):
+        return Episode.objects.filter(series=self).count()
 
 
 class Episode(models.Model):
@@ -18,7 +22,7 @@ class Episode(models.Model):
     episode = models.IntegerField(blank=False)
     name = models.CharField(max_length=255, blank=True, null=True)
     air_at = models.DateTimeField(blank=True, null=True)
-    extra_info = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Record(models.Model):

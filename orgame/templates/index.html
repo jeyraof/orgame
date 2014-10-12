@@ -4,11 +4,31 @@
 <div class="page-head">
     <div class="container">
         <h1>
-            상단 제목부
+            <span>최근 이슈</span>
+            <a class="button right" href="{% url 'series_new' %}">
+                <i class="fa fa-plus"></i>
+                새 시리즈
+            </a>
         </h1>
     </div>
 </div>
-<div class="container">
-컨텐츠 내용
+<div class="container index-content">
+    <div class="dashboard">
+        <div class="news">
+            <ul class="news-list">
+                {% for watch in watches %}
+                <li class="news-list-item watch">
+                    <span class="fa fa-eye"></span>
+                    <a class="user-nickname" href="{% url 'user_collection' watch.user.nickname %}">jeyraof</a>
+                    님이
+                    <a class="series" href="{% url 'series' watch.series.id %}">{{ watch.series.name }}/</a>
+                    <a class="episode" href="{% url 'episode' watch.series.id watch.episode.id %}">{{ watch.episode.name }}</a>
+                    를 보았습니다.
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="rank"></div>
+    </div>
 </div>
 {% endblock %}
