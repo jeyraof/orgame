@@ -270,6 +270,10 @@ dl.form input[type=text] {
   color: #4183c4;
   font-weight: bold;
 }
+#content .page-head h1 .button.right {
+  float: right;
+  padding: 0 12px;
+}
 #footer .site-footer {
   margin-top: 40px;
   padding-top: 40px;
