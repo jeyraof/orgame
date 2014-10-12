@@ -108,6 +108,15 @@ dl.form {
   }
 }
 
+.button-group {
+  &.vertical {
+    padding: 5px 0;
+    .button {
+      margin: 5px 0;
+    }
+  }
+}
+
 .button, .minibutton {
   position: relative;
   display: inline-block;
@@ -133,8 +142,33 @@ dl.form {
   user-select: none;
   -webkit-appearance: none;
 
+  &.wide {
+    width: 100%;
+    text-align: center;
+  }
+
+  &.blue {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+    background-color: #5667a1;
+    background-image: -webkit-linear-gradient(#7f90ca, #5667a1);
+    background-image: linear-gradient(#7f90ca, #5667a1);
+    background-repeat: repeat-x;
+    border-color: #7081bb;
+  }
+
+  &.red {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+    background-color: #b33630;
+    background-image: -webkit-linear-gradient(#dc5f59, #b33630);
+    background-image: linear-gradient(#dc5f59, #b33630);
+    background-repeat: repeat-x;
+    border-color: #cd504a;
+  }
+
   &.green {
-    color: #fff;
+    color: #ffffff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     background-color: #60b044;
     background-image: -webkit-linear-gradient(#8add6d, #60b044);

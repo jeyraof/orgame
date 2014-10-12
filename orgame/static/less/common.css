@@ -99,6 +99,12 @@ dl.form input[type=text] {
   background: #fafafa;
   width: 100%;
 }
+.button-group.vertical {
+  padding: 5px 0;
+}
+.button-group.vertical .button {
+  margin: 5px 0;
+}
 .button,
 .minibutton {
   position: relative;
@@ -125,9 +131,34 @@ dl.form input[type=text] {
   user-select: none;
   -webkit-appearance: none;
 }
+.button.wide,
+.minibutton.wide {
+  width: 100%;
+  text-align: center;
+}
+.button.blue,
+.minibutton.blue {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  background-color: #5667a1;
+  background-image: -webkit-linear-gradient(#7f90ca, #5667a1);
+  background-image: linear-gradient(#7f90ca, #5667a1);
+  background-repeat: repeat-x;
+  border-color: #7081bb;
+}
+.button.red,
+.minibutton.red {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  background-color: #b33630;
+  background-image: -webkit-linear-gradient(#dc5f59, #b33630);
+  background-image: linear-gradient(#dc5f59, #b33630);
+  background-repeat: repeat-x;
+  border-color: #cd504a;
+}
 .button.green,
 .minibutton.green {
-  color: #fff;
+  color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #60b044;
   background-image: -webkit-linear-gradient(#8add6d, #60b044);
