@@ -52,7 +52,7 @@
             {% for item in profile %}
             <li class="search-result-item">
                 <h3 class="user-name">
-                    <a href="{% url 'user_collection' item.user.id %}">{{ item.nickname|highlight:search_keyword|safe }}</a>
+                    <a href="{% url 'user_collection' item.nickname %}">{{ item.nickname|highlight:search_keyword|safe }}</a>
                 </h3>
                 <p class="user-joined-at">
                     Joined on {{ item.joined_at }}
