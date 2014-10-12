@@ -42,6 +42,9 @@ INSTALLED_APPS = (
     'member',
     'suggestion',
 
+    # core
+    'core',
+
     # external
     'debug_toolbar',
 )
