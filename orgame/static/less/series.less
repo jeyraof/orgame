@@ -33,6 +33,43 @@
 
 .episode-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .episode-list-item {
+    border-top: 1px solid #eeeeee;
+    position: relative;
+    padding: 1em 0 1em 45px;
+    font-size: 13px;
+
+    .fa {
+      position: absolute;
+      color: #bababa;
+      left: 11px;
+      font-size: 16px;
+
+      &.on {
+        color: #333333;
+      }
+    }
+
+    .episode-id {
+      color: #4183c4;
+    }
+
+    .episode-name {
+      color: #4183c4;
+      margin-left: 10px;
+    }
+
+    .button {
+      margin-top: -5px;
+    }
+
+    &:first-child {
+      border: 0;
+    }
+  }
 
   .new-episode-form {
     label {

@@ -12,6 +12,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'bundle/normalize.css' %}"/>
     <link rel="stylesheet" href="{% static 'bundle/font-awesome/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bundle/sweetalert/sweet-alert.css' %}"/>
     <link rel="stylesheet" href="{% static 'less/common.css' %}"/>
 </head>
 <body>
@@ -78,5 +79,8 @@
         </div>
     </div>
 </div>
+<script src="{% static 'bundle/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'bundle/sweetalert/sweet-alert.min.js' %}"></script>
+{% block js %}{% endblock %}
 </body>
 </html>
