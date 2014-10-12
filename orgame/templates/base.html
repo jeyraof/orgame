@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript">
     <meta http-equiv="Content-Style-Type" content="text/css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Orga.Me</title>
+    <title>{% block title %}Orga.Me{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'bundle/normalize.css' %}"/>
     <link rel="stylesheet" href="{% static 'bundle/font-awesome/font-awesome.min.css' %}"/>
@@ -19,11 +19,13 @@
     <div class="container clearfix">
         <a class="logo" href="{% url 'main' %}">올가미</a>
 
+        {% if not is_search_page %}
         <div class="search-form-box">
-            <form class="search-form" action="#">
-                <input type="text" name="keyword" placeholder="작품 검색"/>
+            <form class="search-form" action="{% url 'search' %}" method="get">
+                <input type="text" name="q" placeholder="작품 검색" value="{{ search_keyword }}"/>
             </form>
         </div>
+        {% endif %}
 
         <ul class="header-nav right">
             {% if user.is_authenticated %}
