@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 from member.models import Profile
-from series.models import Series
+from series.models import Series, Record
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import View
 
 
-def main(request):
-    return render(request, 'index.html')
+class IndexView(View):
+    def get(self, request):
+        opt = {
+            'watches': Record.objects.order_by('-view_at')[:30]
+        }
 
-
-def handler404(request):
-    return render(request, '404.html')
+        return render(request, 'index.html', opt)
 
 
 class SearchView(View):
@@ -32,3 +33,7 @@ class SearchView(View):
             opt['series_count'] = series.count()
 
         return render(request, 'search.html', opt)
+
+
+def handler404(request):
+    return render(request, '404.html')

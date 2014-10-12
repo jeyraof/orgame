@@ -1,0 +1,44 @@
+.index-content {
+  .dashboard {
+    clear: both;
+    overflow: hidden;
+
+    .news {
+      float: left;
+      width: 620px;
+
+      .news-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .news-list-item {
+          border-top: 1px solid #eeeeee;
+          position: relative;
+          padding: 1em 0 1em 45px;
+          font-size: 13px;
+
+          .fa {
+            position: absolute;
+            color: #bababa;
+            left: 11px;
+            font-size: 16px;
+          }
+
+          a {
+            color: #4183c4;
+          }
+
+          &:first-child {
+            border: 0;
+          }
+        }
+      }
+    }
+
+    .rank {
+      float: right;
+      width: 335px;
+    }
+  }
+}

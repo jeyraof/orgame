@@ -297,6 +297,41 @@ dl.form input[type=text] {
 #footer .site-footer ul li:first-child {
   margin: 0;
 }
+.index-content .dashboard {
+  clear: both;
+  overflow: hidden;
+}
+.index-content .dashboard .news {
+  float: left;
+  width: 620px;
+}
+.index-content .dashboard .news .news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.index-content .dashboard .news .news-list .news-list-item {
+  border-top: 1px solid #eeeeee;
+  position: relative;
+  padding: 1em 0 1em 45px;
+  font-size: 13px;
+}
+.index-content .dashboard .news .news-list .news-list-item .fa {
+  position: absolute;
+  color: #bababa;
+  left: 11px;
+  font-size: 16px;
+}
+.index-content .dashboard .news .news-list .news-list-item a {
+  color: #4183c4;
+}
+.index-content .dashboard .news .news-list .news-list-item:first-child {
+  border: 0;
+}
+.index-content .dashboard .rank {
+  float: right;
+  width: 335px;
+}
 .search-header {
   clear: both;
   overflow: hidden;
