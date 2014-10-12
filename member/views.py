@@ -129,9 +129,12 @@ class UserView(View):
 
         else:
             profile = get_object_or_404(Profile, nickname=nickname)
+            is_mine = False
+            if request.user.is_authenticated():
+                is_mine = profile.id == request.user.profile.id
 
             opt = {
-                'is_mine': profile.id == request.user.profile.id,
+                'is_mine': is_mine,
                 'owner': profile.user,
             }
 
