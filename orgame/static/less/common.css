@@ -329,6 +329,9 @@ dl.form input[type=text] {
 .index-content .dashboard .news .news-list .news-list-item a {
   color: #4183c4;
 }
+.index-content .dashboard .news .news-list .news-list-item a:hover {
+  text-decoration: underline;
+}
 .index-content .dashboard .news .news-list .news-list-item:first-child {
   border: 0;
 }
@@ -538,6 +541,36 @@ dl.form input[type=text] {
 }
 .episode-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.episode-list .episode-list-item {
+  border-top: 1px solid #eeeeee;
+  position: relative;
+  padding: 1em 0 1em 45px;
+  font-size: 13px;
+}
+.episode-list .episode-list-item .fa {
+  position: absolute;
+  color: #bababa;
+  left: 11px;
+  font-size: 16px;
+}
+.episode-list .episode-list-item .fa.on {
+  color: #333333;
+}
+.episode-list .episode-list-item .episode-id {
+  color: #4183c4;
+}
+.episode-list .episode-list-item .episode-name {
+  color: #4183c4;
+  margin-left: 10px;
+}
+.episode-list .episode-list-item .button {
+  margin-top: -5px;
+}
+.episode-list .episode-list-item:first-child {
+  border: 0;
 }
 .episode-list .new-episode-form label {
   font-weight: normal;

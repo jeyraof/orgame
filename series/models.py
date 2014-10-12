@@ -24,12 +24,24 @@ class Episode(models.Model):
     air_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def is_recordable(self, user):
+        return Record.objects.filter(episode=self, user=user).count() < 1
+
+    def record(self, request):
+        user = request.user
+        r = Record.objects.create(user=user,
+                                  series=self.series,
+                                  episode=self,
+                                  star=0, review='')
+        r.save()
+        return r
+
 
 class Record(models.Model):
     user = models.ForeignKey(User, blank=False)
     series = models.ForeignKey(Series, blank=False)
     episode = models.ForeignKey(Episode, blank=False)
-    star = models.IntegerField(blank=True)
+    star = models.IntegerField(blank=True, null=True)
     review = models.TextField(blank=True)
     view_at = models.DateTimeField(auto_now_add=True)
 

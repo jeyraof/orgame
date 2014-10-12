@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+from django.db import IntegrityError
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
-from series.models import Series, Episode
+from series.models import Series, Episode, Record
+import json
 
 
 class SeriesView(View):
@@ -32,7 +36,6 @@ class SeriesView(View):
 
 
 class EpisodeView(View):
-
     def get(self, request, series_id=None, episode_id=None):
         opt = {}
         try:
@@ -46,8 +49,6 @@ class EpisodeView(View):
             return redirect('series', series_id=series_id)
 
         return render(request, 'series/episode.html', opt)
-
-
 
     def post(self, request, series_id=None):
         data = request.POST
@@ -65,3 +66,37 @@ class EpisodeView(View):
         episode = Episode.objects.create(series=series, episode=episode_number, name=episode_name)
         episode.save()
         return redirect('series', series_id=series_id)
+
+
+class EpisodeWatchView(View):
+    def get(self, request, series_id=None, episode_id=None):
+        try:
+            series = Series.objects.get(id=series_id)
+        except Series.DoesNotExist:
+            return HttpResponse(json.dumps({
+                'error': True,
+                'message': u'찾을 수 없는 시리즈입니다.',
+            }), content_type="application/json")
+
+        try:
+            episode = Episode.objects.get(id=episode_id)
+        except Episode.DoesNotExist:
+            return HttpResponse(json.dumps({
+                'error': True,
+                'message': u'찾을 수 없는 에피소드입니다.',
+            }), content_type="application/json")
+
+        print 1
+        # try:
+        record = episode.record(request)
+        print 2
+        # except IntegrityError:
+        #     return HttpResponse(json.dumps({
+        #         'error': True,
+        #         'message': u'이미 보신것 같네요!',
+        #     }), content_type="application/json")
+
+        return HttpResponse(json.dumps({
+            'error': False,
+            'message': u'',
+        }), content_type="application/json")

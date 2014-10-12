@@ -5,10 +5,12 @@
     <div class="container">
         <h1>
             <span>최근 이슈</span>
+            {% if user.is_authenticated and not user.profile.is_newbie %}
             <a class="button right" href="{% url 'series_new' %}">
                 <i class="fa fa-plus"></i>
                 새 시리즈
             </a>
+            {% endif %}
         </h1>
     </div>
 </div>
@@ -21,8 +23,8 @@
                     <span class="fa fa-eye"></span>
                     <a class="user-nickname" href="{% url 'user_collection' watch.user.nickname %}">jeyraof</a>
                     님이
-                    <a class="series" href="{% url 'series' watch.series.id %}">{{ watch.series.name }}/</a>
-                    <a class="episode" href="{% url 'episode' watch.series.id watch.episode.id %}">{{ watch.episode.name }}</a>
+                    <a class="series" href="{% url 'series' watch.series.id %}">{{ watch.series.name }} /</a>
+                    <a class="episode" href="{% url 'episode' watch.series.id watch.episode.id %}">Episode. {{ watch.episode.episode }} {{ watch.episode.name }}</a>
                     를 보았습니다.
                 </li>
                 {% endfor %}
