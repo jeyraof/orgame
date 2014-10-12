@@ -270,6 +270,33 @@ dl.form input[type=text] {
   color: #4183c4;
   font-weight: bold;
 }
+#footer .site-footer {
+  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #777;
+  border-top: 1px solid #eee;
+}
+#footer .site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#footer .site-footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+#footer .site-footer ul li a {
+  color: #4183c4;
+}
+#footer .site-footer ul li a:hover {
+  text-decoration: underline;
+}
+#footer .site-footer ul li:first-child {
+  margin: 0;
+}
 .search-header {
   clear: both;
   overflow: hidden;
@@ -287,6 +314,9 @@ dl.form input[type=text] {
 .search-header .search-header-form form {
   margin: 0;
   padding: 0;
+}
+.search-content {
+  overflow: hidden;
 }
 .search-content .sidebar {
   width: 220px;
