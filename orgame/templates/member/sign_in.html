@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<a href="{% url 'member.views.oauth_facebook' %}">페이스북 로그인</a>
-{% if user %}{{ user }}{% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-box">
+    <h3>로그인</h3>
+    <div class="form-content">
+        <div class="button-group vertical">
+            <a class="button wide blue" href="{% url 'member.views.oauth_facebook' %}">페이스북 로그인</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

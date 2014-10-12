@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load search %}
+
+{% block title %}
+검색 · {{ search_keyword }}
+{% endblock %}
+
+{% block content %}
+<div class="page-head search-header">
+    <div class="container">
+        <h1>검색</h1>
+        <div class="search-header-form">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q" value="{{ search_keyword }}"/>
+                <input type="hidden" name="type" value="{{ search_type }}"/>
+                <button class="button" type="submit">검색</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container search-content">
+    <div class="sidebar">
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="{% url 'search' %}?q={{ search_keyword }}&type=Series" class="{% ifequal search_type 'Series'  %}selected{% endifequal %}">
+                    <i class="fa fa-book"></i>
+                    시리즈
+                    <span class="count">{{ series_count }}</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{% url 'search' %}?q={{ search_keyword }}&type=User" class="{% ifequal search_type 'User'  %}selected{% endifequal %}">
+                    <i class="fa fa-user"></i>
+                    사용자
+                    <span class="count">{{ profile_count }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        {% if search_type == 'Series' %}
+        <ul class="search-result series">
+            {% for item in series %}
+            <li class="search-result-item">
+
+            </li>
+            {% endfor %}
+        </ul>
+        {% elif search_type == 'User' %}
+        <ul class="search-result user">
+            {% for item in profile %}
+            <li class="search-result-item">
+                <h3 class="user-name">
+                    <a href="{% url 'user_collection' item.user.id %}">{{ item.nickname|highlight:search_keyword|safe }}</a>
+                </h3>
+                <p class="user-joined-at">
+                    Joined on {{ item.joined_at }}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
