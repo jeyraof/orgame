@@ -19,7 +19,7 @@
     <ul class="episode-list">
         {% for episode in episode_list %}
         <li class="episode-list-item">
-            {% if episode|is_recordable:user %}
+            {% if user and episode|is_recordable:user %}
                 <a class="button minibutton right episode-watch" href="{% url 'episode_watch' series.id episode.id %}">이거 봤어요!</a>
                 <i class="fa fa-film"></i>
             {% else %}
