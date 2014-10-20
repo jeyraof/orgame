@@ -118,8 +118,9 @@ class SettingsView(View):
             opt['email_msg'] = email_msg
 
         request.user.profile.save()
-
-        return render(request, 'member/settings.html', opt)
+        if opt.keys() and set(opt.items()).pop():
+            return render(request, 'member/settings.html',opt)
+        return redirect('main')
 
 
 class UserView(View):
