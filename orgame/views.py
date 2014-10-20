@@ -11,7 +11,6 @@ class IndexView(View):
         opt = {
             'watches': Record.objects.order_by('-view_at')[:30]
         }
-
         return render(request, 'index.html', opt)
 
 
