@@ -67,19 +67,25 @@ def oauth_facebook_auth(request):
 
     user_profile = get_user_profile(access_token)
     social_user = list(SocialOAuth.objects.filter(provider=SocialOAuth.FACEBOOK, uid=user_profile.get('id', 0)))
-    if social_user:
-        social_user = social_user[0]
-    else:
-        social_user = SocialOAuth.join(provider=SocialOAuth.FACEBOOK,
+
+    def registered_social_user(social_user):
+        if social_user:
+            social_user = social_user[0]
+            redirect_f = redirect('main')
+        else:
+            social_user = SocialOAuth.join(provider=SocialOAuth.FACEBOOK,
                                        uid=user_profile.get('id', 0),
                                        profile=user_profile)
+            redirect_f = redirect('settings')
+        return social_user,redirect_f
 
+    social_user,redirect_f = registered_social_user(social_user)
     login_user = authenticate(username=social_user.user.username,
                               password=md5(social_user.user.username + SECRET_KEY).hexdigest())
 
     if login_user is not None:
         login(request=request, user=login_user)
-        return redirect('main')
+        return redirect_f
 
     else:
         return redirect('signin')
@@ -112,8 +118,9 @@ class SettingsView(View):
             opt['email_msg'] = email_msg
 
         request.user.profile.save()
-
-        return render(request, 'member/settings.html', opt)
+        if opt.keys() and set(opt.items()).pop():
+            return render(request, 'member/settings.html',opt)
+        return redirect('main')
 
 
 class UserView(View):
