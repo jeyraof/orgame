@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="series">
             <span class="fa fa-book"></span>
-            <span class="category">시리즈</span>
+            <a class="category" href="{% url 'series_list' %}">시리즈</a>
             <span class="divider">/</span>
             {% block series_path %}{% endblock %}
         </h1>
