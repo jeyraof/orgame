@@ -539,6 +539,47 @@ dl.form input[type=text] {
   line-height: 23px;
   float: left;
 }
+.series_list {
+  overflow: auto;
+}
+.series_list .nav {
+  float: left;
+  width: 33%;
+}
+.series_list .nav .series_box {
+  background-color: #1DE9B6;
+  padding: 9px;
+  height: 39px;
+  margin-bottom: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.series_list .nav .series_box:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+.series_list .episode_list {
+  margin-left: 34%;
+}
+.series_list .episode_list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.series_list .episode_list ul li {
+  background-color: #F5F5F5;
+  padding: 9px;
+  height: 39px;
+  margin-bottom: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.series_list .episode_list ul li:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transform: translateY(-1px);
+  -moz-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
 .episode-list {
   list-style: none;
   margin: 0;

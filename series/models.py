@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 
@@ -11,6 +12,7 @@ class Series(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True)
     name = models.CharField(max_length=255, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     @property
     def episode_count(self):
@@ -35,7 +37,10 @@ class Episode(models.Model):
                                   star=0, review='')
         r.save()
         return r
-
+    def save(self, *args, **kwargs):
+        self.series.updated_at = timezone.now()
+        self.series.save()
+        super(Episode,self).save(*args,**kwargs)
 
 class Record(models.Model):
     user = models.ForeignKey(User, blank=False)

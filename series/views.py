@@ -7,6 +7,13 @@ from series.models import Series, Episode, Record
 import json
 
 
+class SeriesListView(View):
+    template_path = 'series/list.html'
+    def get(self,request):
+        opt = dict()
+        opt['series_list'] = Series.objects.order_by('-updated_at').all()
+        return render(request,self.template_path,opt)
+
 class SeriesView(View):
     template_path = 'series/series.html'
 
