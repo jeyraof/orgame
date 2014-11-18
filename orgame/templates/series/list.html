@@ -1,0 +1,27 @@
+{% extends 'series/base.html' %}
+
+{% block series_content %}
+<div class="series_list">
+  <div class="nav">
+    {% for series in series_list %}
+    <div class="series_box">
+      {{series.name}}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="episode_list">
+    <ul>
+      <li>
+      Ajax로 
+      </li>
+      <li>
+      에피소드를
+      </li>
+      <li>
+      받아 BOJA
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

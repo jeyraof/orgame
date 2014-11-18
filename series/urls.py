@@ -2,9 +2,10 @@
 
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
-from series.views import SeriesView, EpisodeView, EpisodeWatchView
+from series.views import SeriesListView, SeriesView, EpisodeView, EpisodeWatchView
 
 urlpatterns_series = patterns('',
+                             url(r'^series/$',SeriesListView.as_view(), name='series_list'),
                              url(r'^series/add$', login_required(SeriesView.as_view()), name='series_new'),
                              url(r'^series/(?P<series_id>\d+)/$', SeriesView.as_view(), name='series'),
 
