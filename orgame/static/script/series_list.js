@@ -8,7 +8,7 @@ $(document).ready(function(){
     else {
       $.ajax({
         type: "POST",
-        url: 'http://localhost:5000/series/',
+        url: '/series/',
         data: {series_id:series_id},
         success: function(data){
           if (data.error)
