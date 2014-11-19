@@ -13,6 +13,24 @@ class SeriesListView(View):
         opt = dict()
         opt['series_list'] = Series.objects.order_by('-updated_at').all()
         return render(request,self.template_path,opt)
+    def post(self,request):
+        data = request.POST
+        series_id = int(data.get('series_id',None)[0])
+
+        if not series_id:
+            return HttpResponse(json.dump({'error':True,
+                'message':u'해당 시리즈를 찾을 수 없습니다.'}),content_type='application/json')
+        series = Series.objects.get(id=series_id)
+        if not series:
+            return HttpResponse(json.dump({'error':True,
+                'message':u'해당 시리즈를 찾을 수 없습니다.'}),content_type='application/json')
+        
+        episodes = [ {"id":episode.id,"name":episode.name} for episode in series.episodes() ]
+        return HttpResponse(json.dumps({"error":False,
+            "message":u"",
+            "series_episodes":episodes}),content_type='application/json')
+                
+        
 
 class SeriesView(View):
     template_path = 'series/series.html'
