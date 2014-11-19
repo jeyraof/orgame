@@ -17,6 +17,8 @@ class Series(models.Model):
     @property
     def episode_count(self):
         return Episode.objects.filter(series=self).count()
+    def episodes(self):
+        return Episode.objects.filter(series=self).all()
 
 
 class Episode(models.Model):
