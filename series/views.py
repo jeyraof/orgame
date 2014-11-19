@@ -18,12 +18,12 @@ class SeriesListView(View):
         series_id = int(data.get('series_id',None)[0])
 
         if not series_id:
-            return HttpResponse(json.dump({'error':True,
-                'message':u'해당 시리즈를 찾을 수 없습니다.'}),content_type='application/json')
+            return HttpResponse(json.dump({"error":True,
+                "message":u"해당 시리즈를 찾을 수 없습니다."}),content_type='application/json')
         series = Series.objects.get(id=series_id)
         if not series:
-            return HttpResponse(json.dump({'error':True,
-                'message':u'해당 시리즈를 찾을 수 없습니다.'}),content_type='application/json')
+            return HttpResponse(json.dump({"error":True,
+                "message":u"해당 시리즈를 찾을 수 없습니다."}),content_type='application/json')
         
         episodes = [ {"id":episode.id,"name":episode.name} for episode in series.episodes() ]
         return HttpResponse(json.dumps({"error":False,
